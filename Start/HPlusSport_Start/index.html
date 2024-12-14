@@ -27,6 +27,15 @@
           $(".product-item").has(`[data-type='${type}']`).toggle(isChecked);
         });
       });
+
+      // Chapter 5
+      $(".product-item").each(function() {
+        let name = encodeURIComponent($(this).find("h2").text());
+        let id = encodeURIComponent($(this).data("prod_id"));
+
+        let link = $(`<a href="product.html?prodName=${name}&prodID=${id}">`);
+        $(this).find("img").wrap(link);
+      });
     });
   </script>
 </head>

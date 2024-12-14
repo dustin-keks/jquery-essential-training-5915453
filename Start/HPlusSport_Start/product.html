@@ -6,6 +6,18 @@
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="../jquery-3.7.1.min.js"></script>
+  <script>
+    // Chapter 5
+    $(function() {
+      // extract the query string parameters
+      let params = new URLSearchParams(window.location.search);
+      let prodName = decodeURIComponent(params.get("prodName"));
+      let prodID = decodeURIComponent(params.get("prodID"));
+      
+      // set the product name in the proper placeholder
+      $("#productName").text(prodName);
+    });
+  </script>
 </head>
 <body>
 
