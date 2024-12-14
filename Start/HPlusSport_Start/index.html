@@ -9,9 +9,24 @@
   <script>
     // Put your solution code in this script section
     $(function(){
+      // Chapter 3
       $(".product-name[data-type='vitamin']").css("background-color", "green");
       $(".product-name[data-type='mineralwater']").css("background-color", "blue");
       $(".product-name[data-type='proteinbar']").css("background-color", "purple");
+
+      // Chapter 4
+      $("#cbVitamins, #cbMineralWater, #cbProtein").on("change", function() {
+        const typeMap = {
+          "#cbVitamins": "vitamin",
+          "#cbMineralWater": "mineralwater",
+          "#cbProtein": "proteinbar"
+        };
+
+        $.each(typeMap, function(checkbox, type) {
+          const isChecked = $(checkbox).prop("checked");
+          $(".product-item").has(`[data-type='${type}']`).toggle(isChecked);
+        });
+      });
     });
   </script>
 </head>
