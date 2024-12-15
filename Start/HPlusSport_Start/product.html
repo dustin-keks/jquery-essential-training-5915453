@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="../jquery-3.7.1.min.js"></script>
   <script>
-    // Chapter 5
     $(function() {
+      // Chapter 5
       // extract the query string parameters
       let params = new URLSearchParams(window.location.search);
       let prodName = decodeURIComponent(params.get("prodName"));
@@ -16,6 +16,19 @@
       
       // set the product name in the proper placeholder
       $("#productName").text(prodName);
+
+      // Chapter 6
+      // get json data
+      $.getJSON("product-data.json").done(function(productData) {
+        productData.products.forEach(function(element) {
+          if (element.prod_id == prodID) {
+            // prod_id in json file has to match prodID parameter in URL
+            $("#productStock").text(element.in_stock);
+            $("#productPrice").text(element.retail_price);
+            $("#productDesc").text(element.description);
+          }
+        })
+      });
     });
   </script>
 </head>
